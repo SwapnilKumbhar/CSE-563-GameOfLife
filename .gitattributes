@@ -1,0 +1,2 @@
+# Ensure the bat files do not go bad
+*.bat           text eol=crlf
