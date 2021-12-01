@@ -20,7 +20,6 @@ public class GridButton {
         // Handler for grid
         btn.addActionListener(event -> {
             toggleActive();
-
         });
     }
 
