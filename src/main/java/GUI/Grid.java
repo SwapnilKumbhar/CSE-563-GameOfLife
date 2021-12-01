@@ -9,7 +9,7 @@ class Grid {
     private int cols = 0;
     List<List<GridButton>> gridButtons;
 
-    void Grid(int rows, int cols) {
+    public Grid(int rows, int cols) {
 
         gridButtons = new ArrayList<>();
         for(int row = 0; row < rows; row++) {
@@ -29,6 +29,6 @@ class Grid {
             this.gridButtons
                     .get(row)
                     .get(col)
-                    .setActive();
+                    .toggleActive();
     }
 }
