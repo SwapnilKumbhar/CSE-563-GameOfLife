@@ -78,4 +78,16 @@ public class Menu extends JMenuBar {
     public JMenuBar getMenuBar() {
         return jMenu;
     }
+
+    public void startGame() {
+        System.out.println("Starting game");
+    }
+
+    public void stopGame() {
+        System.out.println("Stopping game");
+    }
+
+    public void runSingleSimulation() {
+        System.out.println("Running one simulation");
+    }
 }

@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 public class GameFrame {
@@ -31,6 +33,38 @@ public class GameFrame {
         gamePanel.setLayout(gridLayout);
         gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+        // Setup listeners
+        gamePanel.setFocusable(true);
+        gamePanel.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                switch(e.getKeyChar()) {
+                    case 'd': // Next simulation
+                        gameMenu.runSingleSimulation();
+                        break;
+                    case 'a': // Start simulation
+                        gameMenu.startGame();
+                        break;
+                    case 's': // Stop simulation
+                        gameMenu.stopGame();
+                        break;
+                    default:
+                        // Do nothing
+                        break;
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // Do nothing
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // Do nothing
+            }
+        });
+
         // Add buttons to the grid
         List<List<GridButton>> buttons = grid.getGridButtons();
         for(int r = 0; r < rows; r++) {
@@ -41,6 +75,7 @@ public class GameFrame {
         jframe.setJMenuBar(gameMenu.getMenuBar());
 
         jframe.add(gamePanel);
+
     }
 
     public void showFrame() {
