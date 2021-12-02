@@ -10,6 +10,7 @@ public class GameFrame {
     private JPanel gamePanel;
     private GridLayout gridLayout;
     private Grid grid;
+    private Menu gameMenu;
 
     public GameFrame() {
         this.jframe = new JFrame();
@@ -25,6 +26,7 @@ public class GameFrame {
         grid = new Grid(rows, cols);
 
         gamePanel = new JPanel();
+        gameMenu = new Menu();
         gamePanel.setSize(700, 700);
         gamePanel.setLayout(gridLayout);
         gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -36,6 +38,7 @@ public class GameFrame {
                 gamePanel.add(buttons.get(r).get(c).get());
             }
         }
+        jframe.setJMenuBar(gameMenu.getMenuBar());
 
         jframe.add(gamePanel);
     }
