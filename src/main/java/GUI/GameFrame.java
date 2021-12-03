@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
+import java.util.Arrays;
 
 public class GameFrame {
 
@@ -83,7 +84,34 @@ public class GameFrame {
     }
 
 
-    public void refreshGrid() {
+    public void refreshGrid(Boolean[][] booleanListOfCells) {
+        grid.resetGrid();
 
+        for(int i = 1; i < 51; i++)
+        {
+            for(int j = 1; j < 51; j++)
+            {
+                if(booleanListOfCells[i][j] == true)
+                {
+                    grid.setCellActive(i, j);
+                }
+            }
+        }
+    }
+
+
+    public Boolean[][] getBooleanListFromGrid()
+    {
+        Boolean[][] listOfBooleansToReturn = new Boolean[52][52];
+        Arrays.fill(listOfBooleansToReturn, Boolean.FALSE);
+        for(int row = 0; row < grid.gridButtons.size(); row++) {
+            for(int col = 0; col < grid.gridButtons.get(row).size(); col++) {
+                if(grid.gridButtons.get(row).get(col).getIsActive())
+                {
+                    listOfBooleansToReturn[row+1][col+1] = true;
+                }
+            }
+        }
+        return listOfBooleansToReturn;
     }
 }
