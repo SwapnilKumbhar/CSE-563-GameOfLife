@@ -3,10 +3,13 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
+import Core.CellSimulation;
+
 public class Grid {
 
     private int rows;
     private int cols;
+    public CellSimulation cell;
     List<List<GridButton>> gridButtons;
 
     public Grid(int rows, int cols) {

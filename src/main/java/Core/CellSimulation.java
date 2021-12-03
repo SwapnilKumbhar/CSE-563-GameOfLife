@@ -13,6 +13,13 @@ public class CellSimulation {
         current_cell_status = initialState;
     }
 
+    //Add a function to take in the currentState work on the simulation and return the nextState back. This is all we will need from Qihao's
+    public boolean[][] nextIterationProvider(boolean[][] currentState)
+    {
+        current_cell_status = currentState;
+        simulate();
+        return getNextState();
+    }
 
     public void simulate() {
 

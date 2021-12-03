@@ -1,6 +1,9 @@
 package GUI;
 
 import javax.swing.*;
+
+import Core.CellSimulation;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -84,9 +87,24 @@ public class GameFrame {
     }
 
 
-    public void refreshGrid(Boolean[][] booleanListOfCells) {
+    public void refreshGrid() {
         grid.resetGrid();
 
+        //convert grid to bool array
+        boolean[][] listOfBooleansToReturn = new boolean[52][52];
+        Arrays.fill(listOfBooleansToReturn, Boolean.FALSE);
+        for(int row = 0; row < grid.gridButtons.size(); row++) {
+            for(int col = 0; col < grid.gridButtons.get(row).size(); col++) {
+                if(grid.gridButtons.get(row).get(col).getIsActive())
+                {
+                    listOfBooleansToReturn[row+1][col+1] = true;
+                }
+            }
+        }
+
+        //call nextIterationProvider();
+
+        boolean[][] booleanListOfCells = grid.cell.nextIterationProvider(listOfBooleansToReturn);
         for(int i = 1; i < 51; i++)
         {
             for(int j = 1; j < 51; j++)
@@ -97,21 +115,8 @@ public class GameFrame {
                 }
             }
         }
+        //grid updated
     }
 
 
-    public Boolean[][] getBooleanListFromGrid()
-    {
-        Boolean[][] listOfBooleansToReturn = new Boolean[52][52];
-        Arrays.fill(listOfBooleansToReturn, Boolean.FALSE);
-        for(int row = 0; row < grid.gridButtons.size(); row++) {
-            for(int col = 0; col < grid.gridButtons.get(row).size(); col++) {
-                if(grid.gridButtons.get(row).get(col).getIsActive())
-                {
-                    listOfBooleansToReturn[row+1][col+1] = true;
-                }
-            }
-        }
-        return listOfBooleansToReturn;
-    }
 }
