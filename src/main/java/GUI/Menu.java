@@ -9,8 +9,8 @@ import java.net.URI;
 
 public class Menu extends JMenuBar {
     public JMenuBar jMenu;
-    public JMenu jHelp, jPattern, jGame, jClear;
-    public JMenuItem jExp, jAbout, jCode;
+    public JMenu jHelp, jPattern, jGame;
+    public JMenuItem jExp, jAbout, jCode, jClear;
     public JMenuItem jP1, jP2, jP3;
     public JMenuItem jStart, JStop, JNext, JSpeed;
     public Grid grid;
@@ -55,7 +55,7 @@ public class Menu extends JMenuBar {
         jMenu.add(jGame);
         jPattern = new JMenu("Choose Pattern");
         jMenu.add(jPattern);
-        jClear = new JMenu("Clear");
+        jClear = new JMenuItem("Clear");
         jMenu.add(jClear);
         jHelp = new JMenu("Help");
         jMenu.add(jHelp);
