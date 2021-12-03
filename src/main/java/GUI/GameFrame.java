@@ -1,10 +1,14 @@
 package GUI;
 
 import javax.swing.*;
+
+import Core.CellSimulation;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
+import java.util.Arrays;
 
 public class GameFrame {
 
@@ -83,7 +87,7 @@ public class GameFrame {
     }
 
 
-    public void refreshGrid() {
+    
 
-    }
+
 }

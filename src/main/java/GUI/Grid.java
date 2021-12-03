@@ -3,10 +3,13 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
-class Grid {
+import Core.CellSimulation;
+
+public class Grid {
 
     private int rows;
     private int cols;
+    public CellSimulation cell;
     List<List<GridButton>> gridButtons;
 
     public Grid(int rows, int cols) {
@@ -43,5 +46,37 @@ class Grid {
 
             }
         }
+    }
+
+    public void refreshGrid() {
+
+        //convert grid to bool array
+        // boolean[][] listOfBooleansToReturn = new boolean[52][52];
+        // Arrays.fill(listOfBooleansToReturn, Boolean.FALSE);
+        // for(int row = 0; row < grid.gridButtons.size(); row++) {
+        //     for(int col = 0; col < grid.gridButtons.get(row).size(); col++) {
+        //         if(grid.gridButtons.get(row).get(col).getIsActive())
+        //         {
+        //             listOfBooleansToReturn[row+1][col+1] = true;
+        //         }
+        //     }
+        // }
+
+        this.resetGrid();
+
+        //call nextIterationProvider();
+
+        boolean[][] booleanListOfCells = this.cell.nextIterationProvider();
+        for(int i = 1; i < 51; i++)
+        {
+            for(int j = 1; j < 51; j++)
+            {
+                if(booleanListOfCells[i][j] == true)
+                {
+                    this.setCellActive(i, j);
+                }
+            }
+        }
+        //grid updated
     }
 }
