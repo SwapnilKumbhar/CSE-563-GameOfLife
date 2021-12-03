@@ -41,4 +41,9 @@ public class GridButton {
         return isActive;
     }
 
+    public void setInactive() {
+        if (isActive) {
+            toggleActive();
+        }
+    }
 }
