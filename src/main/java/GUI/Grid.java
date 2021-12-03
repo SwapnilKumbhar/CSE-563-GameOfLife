@@ -3,7 +3,7 @@ package GUI;
 import java.util.ArrayList;
 import java.util.List;
 
-class Grid {
+public class Grid {
 
     private int rows;
     private int cols;
