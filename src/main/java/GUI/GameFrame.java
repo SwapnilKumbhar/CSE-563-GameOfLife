@@ -32,7 +32,7 @@ public class GameFrame {
         grid = new Grid(rows, cols);
 
         gamePanel = new JPanel();
-        gameMenu = new Menu();
+        gameMenu = new Menu(grid);
         gamePanel.setSize(700, 700);
         gamePanel.setLayout(gridLayout);
         gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
