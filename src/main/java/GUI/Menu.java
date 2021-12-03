@@ -9,10 +9,11 @@ import java.net.URI;
 
 public class Menu extends JMenuBar {
     public JMenuBar jMenu;
-    public JMenu jHelp, jPattern, jGame;
+    public JMenu jHelp, jPattern, jGame, jClear;
     public JMenuItem jExp, jAbout, jCode;
     public JMenuItem jP1, jP2, jP3;
     public JMenuItem jStart, JStop, JNext, JSpeed;
+    public Grid grid;
 
     //public String explanationText = "<html><ul><li>First</li><li>Second</li></ul></html>";
    public String explanationText = """
@@ -46,13 +47,16 @@ public class Menu extends JMenuBar {
 </html>
             """;
 
-    public Menu()
+    public Menu(Grid grid)
     {
+        this.grid = grid;
         jMenu = new JMenuBar();
         jGame = new JMenu("Game");
         jMenu.add(jGame);
         jPattern = new JMenu("Choose Pattern");
         jMenu.add(jPattern);
+        jClear = new JMenu("Clear");
+        jMenu.add(jClear);
         jHelp = new JMenu("Help");
         jMenu.add(jHelp);
         jExp = new JMenuItem("Explanation");
@@ -75,6 +79,56 @@ public class Menu extends JMenuBar {
         jGame.add(JStop);
         jGame.add(JNext);
         jGame.add(JSpeed);
+        jClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grid.resetGrid();
+            }
+        });
+        jP1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grid.resetGrid();
+                grid.gridButtons.get(10).get(10).toggleActive();
+                grid.gridButtons.get(11).get(11).toggleActive();
+                grid.gridButtons.get(12).get(9).toggleActive();
+                grid.gridButtons.get(12).get(10).toggleActive();
+                grid.gridButtons.get(12).get(11).toggleActive();
+            }
+        });
+        jP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grid.resetGrid();
+                for(int c = 23; c < 27; c++) {
+                    grid.gridButtons.get(21).get(c).toggleActive();
+                    grid.gridButtons.get(27).get(c).toggleActive();
+                }
+                for(int c = 21; c < 29; c++) {
+                    grid.gridButtons.get(23).get(c).toggleActive();
+                    grid.gridButtons.get(29).get(c).toggleActive();
+                }
+                for(int c = 19; c < 31; c++) {
+                    grid.gridButtons.get(25).get(c).toggleActive();
+                }
+            }
+        });
+        jP3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grid.resetGrid();
+                for (int i=0; i<50; i++) {
+                    for (int j=0; j<50; j++) {
+                        if (Math.random()*100 < 10) {
+                            grid.gridButtons
+                                    .get(i)
+                                    .get(j)
+                                    .toggleActive();
+                        }
+                    }
+                }
+            }
+        });
         jExp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
