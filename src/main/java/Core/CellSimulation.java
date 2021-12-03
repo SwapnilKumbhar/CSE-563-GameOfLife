@@ -11,6 +11,8 @@ public class CellSimulation {
         //TODO: Pad the grid borders
         //TODO: Send initial state
         current_cell_status = initialState;
+        // Initialise default array
+        next_cell_status = new boolean[52][52];
     }
 
     //Add a function to take in the currentState work on the simulation and return the nextState back. This is all we will need from Qihao's
@@ -32,7 +34,7 @@ public class CellSimulation {
                 //Padding the real grid
                 if(current_cell_status[i-1][j-1]==true){ counter++; }
                 if(current_cell_status[i-1][j]==true){ counter++; }
-                if(current_cell_status[i][j+1]==true){ counter++; }
+                if(current_cell_status[i-1][j+1]==true){ counter++; }
 
                 if(current_cell_status[i][j-1]==true){ counter++; }
                 if(current_cell_status[i][j+1]==true){ counter++; }
@@ -45,11 +47,10 @@ public class CellSimulation {
                 if(current_cell_status[i][j]==true){
 
                     if(2<=counter && counter<=3){ next_cell_status[i][j]=true; }
-                    else{ next_cell_status[i][j]=false; }
+
                 }
                 else{
                     if(counter == 3){ next_cell_status[i][j]=true; }
-                    else{ next_cell_status[i][j]=false; }
                 }
 
             }
@@ -57,11 +58,12 @@ public class CellSimulation {
         }
 
         //update the current cell status
-        current_cell_status=next_cell_status;
+        current_cell_status = next_cell_status;
     }
 
     public boolean[][] getNextState() {
         // TODO: Return new grid. The next generation.
+        current_cell_status = next_cell_status;
         return next_cell_status;
     }
 }

@@ -10,7 +10,8 @@ public class Grid {
     private int rows;
     private int cols;
     public CellSimulation cell;
-    List<List<GridButton>> gridButtons;
+    public List<List<GridButton>> gridButtons;
+    private boolean gamePlayState;
 
     public Grid(int rows, int cols) {
         this.rows = rows;
@@ -22,6 +23,7 @@ public class Grid {
                 currentList.add(new GridButton());
             gridButtons.add(currentList);
         }
+        gamePlayState = false;
     }
 
     List<List<GridButton>> getGridButtons() {
@@ -48,19 +50,21 @@ public class Grid {
         }
     }
 
-    public void refreshGrid() {
+    public void resetCellSimulator() {
 
-        //convert grid to bool array
-        // boolean[][] listOfBooleansToReturn = new boolean[52][52];
-        // Arrays.fill(listOfBooleansToReturn, Boolean.FALSE);
-        // for(int row = 0; row < grid.gridButtons.size(); row++) {
-        //     for(int col = 0; col < grid.gridButtons.get(row).size(); col++) {
-        //         if(grid.gridButtons.get(row).get(col).getIsActive())
-        //         {
-        //             listOfBooleansToReturn[row+1][col+1] = true;
-        //         }
-        //     }
-        // }
+        boolean[][] currentState = new boolean[52][52];
+        for(int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (gridButtons.get(row).get(col).getIsActive()) {
+                    currentState[row + 1][col + 1] = true;
+                }
+            }
+        }
+
+        this.cell = new CellSimulation(currentState);
+    }
+
+    public void refreshGrid() {
 
         this.resetGrid();
 
@@ -73,10 +77,12 @@ public class Grid {
             {
                 if(booleanListOfCells[i][j] == true)
                 {
-                    this.setCellActive(i, j);
+                    this.setCellActive(i - 1, j - 1);
                 }
             }
         }
         //grid updated
     }
+
+
 }
