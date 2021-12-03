@@ -79,4 +79,20 @@ public class Grid {
         }
         //grid updated
     }
+
+
+    public void startGame() {
+        // Initialise CellSimulator
+        System.out.println("Starting game");
+    }
+
+    public void stopGame() {
+        System.out.println("Stopping game");
+    }
+
+    public void runSingleSimulation() {
+        System.out.println("Running one simulation");
+    }
+
+
 }

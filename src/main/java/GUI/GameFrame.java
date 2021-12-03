@@ -44,13 +44,13 @@ public class GameFrame {
             public void keyTyped(KeyEvent e) {
                 switch(e.getKeyChar()) {
                     case 'd': // Next simulation
-                        gameMenu.runSingleSimulation();
+                        grid.runSingleSimulation();
                         break;
                     case 'a': // Start simulation
-                        gameMenu.startGame();
+                        grid.startGame();
                         break;
                     case 's': // Stop simulation
-                        gameMenu.stopGame();
+                        grid.stopGame();
                         break;
                     default:
                         // Do nothing

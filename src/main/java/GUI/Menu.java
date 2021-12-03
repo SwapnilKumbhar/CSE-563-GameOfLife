@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.net.URI;
 
 public class Menu extends JMenuBar {
@@ -15,8 +14,7 @@ public class Menu extends JMenuBar {
     public JMenuItem jStart, JStop, JNext, JSpeed;
     public Grid grid;
 
-    //public String explanationText = "<html><ul><li>First</li><li>Second</li></ul></html>";
-   public String explanationText = """
+    public String explanationText = """
 <html>
 <body>
     <section>
@@ -160,15 +158,4 @@ public class Menu extends JMenuBar {
         return jMenu;
     }
 
-    public void startGame() {
-        System.out.println("Starting game");
-    }
-
-    public void stopGame() {
-        System.out.println("Stopping game");
-    }
-
-    public void runSingleSimulation() {
-        System.out.println("Running one simulation");
-    }
 }
