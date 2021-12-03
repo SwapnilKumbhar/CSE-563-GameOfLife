@@ -5,12 +5,13 @@ import java.util.List;
 
 class Grid {
 
-    private int rows = 0;
-    private int cols = 0;
+    private int rows;
+    private int cols;
     List<List<GridButton>> gridButtons;
 
     public Grid(int rows, int cols) {
-
+        this.rows = rows;
+        this.cols = cols;
         gridButtons = new ArrayList<>();
         for(int row = 0; row < rows; row++) {
             List<GridButton> currentList = new ArrayList<>();
@@ -30,5 +31,17 @@ class Grid {
                     .get(row)
                     .get(col)
                     .toggleActive();
+    }
+
+    void resetGrid() {
+        for(int row = 0; row < rows; row++) {
+            for(int col = 0; col < cols; col++) {
+                this.gridButtons
+                        .get(row)
+                        .get(col)
+                        .setInactive();
+
+            }
+        }
     }
 }
